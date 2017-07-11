@@ -1,0 +1,26 @@
+﻿<nav id="nav">
+    <ul>
+        <li class="current"><a href="/Home/Index">Home</a></li>
+        <li><a href="/Home/Requesting">Requests</a></li>
+        <li><a href="/Home/Contacts">Contact Us</a></li>
+        <li>
+            @if (Session["uid"] == null)
+            {
+                <a href="#">Sign In</a>
+                <ul>
+                    <li><a href="/Home/Login">Log In</a></li>
+                    <li><a href="/Home/SignUp">Create Account</a></li>
+                </ul>
+            }
+            else
+            {
+                <a href="#"><b>@Session["uname"]</b></a>
+                <ul>
+                    <li><a href="/Home/Favs">View Favourites</a></li>
+                    <li><a href="/Home/EditUser">Edit Profile</a></li>
+                    <li><a href="/Home/LogOut">Logout</a></li>
+                </ul>
+            }
+        </li>
+    </ul>
+</nav>

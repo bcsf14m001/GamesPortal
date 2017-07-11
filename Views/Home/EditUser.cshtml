@@ -1,0 +1,86 @@
+﻿@model WebApplication3.Models.User
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Header -->
+<div id="header-wrapper" class="wrapper">
+    <div id="header">
+
+        <!-- Logo -->
+        <div id="logo">
+            <h1><a href="index.html">Imag!ne</a></h1>
+            <p>Find the best games for your PC</p>
+        </div>
+
+        <!-- Nav -->
+        @Html.Partial("_HomeNavPartial")
+
+    </div>
+</div>
+
+<!-- Main -->
+<div class="wrapper style2">
+    <div class="title" style="margin-left: 1%;width:55%;padding:1%">
+        <h2>Edit Profile</h2>
+    </div>
+    <div id="main" class="container">
+        <div id="content">
+            <article class="box post">
+                <div class="row 150%">
+                    <div class="6u 12u(mobile)">
+                        
+                        <section id="intro" class="container">
+                            @using (Html.BeginForm("EditUser1", "Home", FormMethod.Post))
+                            {
+                                @Html.HiddenFor(model => model.Id);
+                                <div class="row 50%">
+                                    <div class="10u 12u(mobile)">
+                                        @Html.LabelFor(model => model.Name)
+                                        @Html.EditorFor(model => model.Name)
+                                        @Html.ValidationMessageFor(model => model.Name)
+                                    </div>
+                                    <div class="10u 12u(mobile)">
+                                        @Html.LabelFor(model => model.Pass)
+                                        @Html.EditorFor(model => model.Pass)
+                                        @Html.ValidationMessageFor(model => model.Pass)
+                                    </div>
+                                    <div class="10u 12u(mobile)">
+                                        @Html.LabelFor(model => model.Addr)
+                                        @Html.EditorFor(model => model.Addr)
+                                        @Html.ValidationMessageFor(model => model.Addr)
+                                    </div>
+                                    <div class="5u 12u(mobile)">
+                                        @Html.LabelFor(model => model.CPU)
+                                        @Html.EditorFor(model => model.CPU)
+                                        @Html.ValidationMessageFor(model => model.CPU)
+                                    </div>
+                                    <div class="5u 12u(mobile)">
+                                        @Html.LabelFor(model => model.Ram)
+                                        @Html.EditorFor(model => model.Ram)
+                                        @Html.ValidationMessageFor(model => model.Ram)
+                                    </div>
+                                    <div class="5u 12u(mobile)">
+                                        @Html.LabelFor(model => model.GPU)
+                                        @Html.EditorFor(model => model.GPU)
+                                        @Html.ValidationMessageFor(model => model.GPU)
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="12u">
+                                        <ul class="actions">
+                                            <li><input type="submit" class="style1" value="Save Changes" /></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            }
+                        </section>
+                    </div>
+                </div>
+            </article>
+
+            </div>
+
+        </div>
+    </div>
+

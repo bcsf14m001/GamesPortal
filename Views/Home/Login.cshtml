@@ -1,0 +1,116 @@
+@{
+    Layout = null;
+}
+<html>
+    <head>
+        <title>Welcome</title>
+        <link rel="stylesheet" href="@Url.Content("~/Content/")assets/css/main.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<style>
+			body
+			{	
+				width:100%;
+				background-image: url(/Content/Images/gamesBG.jpg);
+				background-repeat: no-repeat;
+				background-size: cover;
+				height:auto;
+				overflow-x:hidden;
+				font-family: Century Gothic, ‘Lucida Grande’, sans-serif;
+			}
+			
+			#login
+			{
+				height:350px;
+				width :300px;
+				background-color:white;
+				/*margin-right: 10%;
+				padding:10px;
+				margin-left:10%;*/
+				margin-left:35%;
+				margin-right:30%;
+				/*box-shadow: 10px 10px 5px 5px #404040;*/
+			}
+			
+			#head1
+			{
+				width:50%;
+				height:100px;
+				margin-left:10%;
+				color : #f2f2f2;
+				font-family: Century Gothic, ‘Lucida Grande’, sans-serif;
+			}
+			
+			#in{
+			margin-left:auto;
+			margin-right:auto;
+			text-align:center;
+			}
+			
+			p 
+			{
+				text-align:center;
+                color:white;
+			}
+            .wrapper {
+                display: table;
+                position: absolute;
+                height: 100%;
+                width: 100%;
+            }
+            .blur {
+                width:100%;
+                top:10%;
+                height:400px;
+                position:absolute;
+                background-image:url('../../Content/Images/gamesBg.jpg');
+                background-size:cover;
+                -webkit-filter: blur(4px);
+                -moz-filter: blur(4px);
+                -ms-filter: blur(4px);
+                -o-filter: blur(4px);
+                filter: blur(4px);
+            }
+            .content
+            {
+                margin-top:8%;
+                margin-left:40%;
+                margin-right:30%;
+                width:300px;
+                position: relative;
+            }
+
+			
+		</style>
+		
+	</head>
+	
+<body>
+    <a href="/Home/Index"> <img src="~/Content/Images/back.png" style="width:50px;height:50px;border:0;"></a>
+    <br /><br />
+    <div class="wrapper">
+        <div class="blur"></div>
+        <div class="content">
+            @using (Html.BeginForm("Login1", "Home", FormMethod.Post))
+            { 
+                    <p style="color:black">
+                        <input name="name" type="text" placeholder="Username">
+                        <input type="password" name="pass" placeholder="Password">
+
+                    </p>
+                    <input style="text-align:center ; margin-left:100px; width:90px;" class="special" type="submit" name="submit" value="Log In">
+            }
+            <p>
+                Don't have A Account yet?</p>
+                <a href="/Home/SignUp"><input style="text-align:center ; margin-left:100px ; width:90px; " class="special" type="submit" name="sign" value="Sign Up"></a>
+
+
+            <br/><br/><p><a href="/Home/ForgetPass" style="color:cornflowerblue"><b style="color:white">Forgot Password?</b></a></p>
+        </div>
+</div>
+
+</body>
+
+
+	
+	
+</html>

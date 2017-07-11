@@ -1,0 +1,162 @@
+﻿
+@{
+    ViewBag.Title = "SignUp";
+    Layout = null;
+}
+@System.Web.Optimization.Scripts.Render("~/bundles/jquery")
+<html>
+<head>
+    <link rel="stylesheet" href="@Url.Content("~/Content/")assets/css/main.css" />
+    <title>Imag!ne</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            width: 100%;
+            background-image: url(/Content/Images/RegisterBG.jpg);
+            background-size:cover;
+            height: auto;
+            font-family: Century Gothic, ‘Lucida Grande’, sans-serif;
+            overflow-x: hidden;
+        }
+
+        #signup {
+            float: right;
+            height: auto;
+            width: 400px;
+            background-color: white;
+            padding-top: 10px;
+            padding-left: 30px;
+            padding-right: 30px;
+            padding-bottom: 30px;
+            margin-right: 50px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            box-shadow: 10px 10px 5px #404040;
+        }
+
+        #head {
+            float: left;
+            width: 50%;
+            height: 100px;
+            margin-left: 10%;
+            color: black;
+            font-family: Century Gothic, ‘Lucida Grande’, sans-serif;
+        }
+
+
+        #in {
+            margin-left:auto;
+            margin-right: auto;
+            text-align: center;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <a href="/Home/Index"> <img src="~/Content/Images/back.png" style="width:50px;height:50px;border:0;"></a>
+    <div id="signup">
+        <p style="font-size:20px ; color:black ; text-align:center">Create your Account</p>
+        @using (Html.BeginForm("SignUp1", "Home", FormMethod.Post))
+        {
+            <p>Username<br />
+            <input style="width:300px" name="name" id="username" type="text">
+            <span id="errField"></span>
+            <br />
+
+            Enter a Password<br />
+            <input style="width:300px" name="pass" id="password" type="password"><br />
+
+            Confirm your password<br />
+            <input style="width:300px" name="pass2" id="confirm_password" type="password">
+            <span id="message"></span><br />   
+
+            Email<br />
+            <input style="width:300px" name="addr" id="emailA" type="email">
+            <span id="message1"></span><br />
+
+            CPU<br />
+            <input style="width:300px" name="cpu" type="number"><br />
+
+            Ram<br />
+            <input style="width:300px" name="ram" type="number"><br />
+
+            GPU<br />
+            <input style="width:300px" name="gpu" type="number"><br />
+
+
+            <input style="text-align:center ; margin-left:70px; width:90px;" type="submit" name="submit" id="b1" value="Sign Up">
+            </p>
+        }
+        <script>
+            $(document).ready(function ()
+            {
+                $("#b1").attr("disabled", "disabled");
+                $('#username').focusout(function ()
+                {
+                    debugger;
+                    var uname = $('#username').val();
+                    $('#errField').text("checking...");
+                    $.getJSON("/Home/CheckAvailability?uname=" + uname, function (data)
+                    {
+                        debugger;
+                        if(data == true)
+                        {
+                            debugger;
+                            $('#errField').css({ "color": "green" });
+                            $('#errField').text("Username Available.");
+                            $("#b1").removeAttr("disabled");
+                        }
+                        else
+                        {
+                            debugger;
+                            $('#errField').css({ "color": "red" });
+                            $('#errField').text("Username taken!!");
+                        }
+                    });
+                });
+                $('#password, #confirm_password').on('keyup', function ()
+                {
+                    $("#b1").attr("disabled", "disabled");
+                    if ($('#password').val() == $('#confirm_password').val())
+                    {
+                        $('#message').html('Matching').css('color', 'green');
+                        $("#b1").removeAttr("disabled");
+                    }
+                    else
+                    {
+                        $("#b1").attr("disabled", "disabled");
+                        $('#message').html('Not Matching').css('color', 'red');
+                    }
+                });
+
+                $('#emailA').focusout(function() 
+                {
+                    var re = /\S+@@\S+\.\S+/;
+                    debugger;
+                    if(re.test($('#emailA').val()) == true)
+                    {
+                        debugger;
+                        $('#message1').html('Valid').css('color', 'green');
+                    }
+                    else
+                    {
+                        debugger
+                        $('#message1').html('Invalid Email').css('color', 'red');
+                    }
+                });
+            });
+
+        </script>
+    </div>
+    <br /><br /><br />
+    <br /><br /><br />
+
+</body>
+
+
+
+
+</html>
+
+

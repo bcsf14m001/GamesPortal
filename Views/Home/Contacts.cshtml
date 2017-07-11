@@ -1,0 +1,67 @@
+﻿@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Contact";
+}
+ <!-- Header -->
+<div id="header-wrapper" class="wrapper">
+    <div id="header">
+
+        <!-- Logo -->
+        <div id="logo">
+            <h1><a href="index.html">Imag!ne</a></h1>
+            <p>Find the best games for your PC</p>
+        </div>
+
+        <!-- Nav -->
+        @Html.Partial("_HomeNavPartial")
+
+    </div>
+</div>
+
+<div class="wrapper style2">
+    <div class="title" style="margin-left: 1%;width:55%;padding:1%">
+       <h2>Contact Us</h2>
+    </div>
+    <div id="main" class="container">
+        <div id="content">
+            <article class="box post">
+                <div class="row 150%">
+                    <div class="6u 12u(mobile)">
+
+                        <!-- Contact Form -->
+                        <section>
+                            @using (Html.BeginForm("Contacts1", "Home", FormMethod.Post))
+                            { 
+                                <div class="row 50%">
+                                    <div class="6u 12u(mobile)">
+                                        <input type="text" name="name" id="contact-name" placeholder="Name" />
+                                    </div>
+                                    <div class="6u 12u(mobile)">
+                                        <input type="text" name="email" id="contact-email" placeholder="Email" />
+                                    </div>
+                                    <div class="6u 12u(mobile)">
+                                        <input type="password" name="pass" id="contact-password" placeholder="Password" />
+                                    </div>
+                                </div>
+                                <div class="row 50%">
+                                    <div class="12u">
+                                        <textarea name="message" id="contact-message" placeholder="Message" rows="4"></textarea>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="12u">
+                                        <ul class="actions">
+                                            <li><input type="submit" class="style1" value="Send" /></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            }
+                        </section>
+                    </div>
+             </div>
+</article>
+
+        </div>
+
+    </div>
+</div>

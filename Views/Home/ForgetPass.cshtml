@@ -1,0 +1,88 @@
+﻿@{
+    Layout = null;
+}
+<html>
+<head>
+    <title>Welcome</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            width: 100%;
+            background-image: url(/Content/Images/gamesBG.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: auto;
+            overflow-x: hidden;
+            font-family: Century Gothic, ‘Lucida Grande’, sans-serif;
+        }
+
+        #login {
+            height: 350px;
+            width: 300px;
+            background-color: white;
+            /*margin-right: 10%;
+                padding:10px;
+                margin-left:10%;*/
+            margin-left: 35%;
+            margin-right: 30%;
+            /*box-shadow: 10px 10px 5px 5px #404040;*/
+        }
+
+        #head1 {
+            width: 50%;
+            height: 100px;
+            margin-left: 10%;
+            color: #f2f2f2;
+            font-family: Century Gothic, ‘Lucida Grande’, sans-serif;
+        }
+
+        #in {
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        p {
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body>
+    <a href="Index.html"> <img src="backButton.png" style="width:50px;height:50px;border:0;"></a>
+    <br /><br />
+    <h1 id="head1" style="color:grey">Expert Service.Best Price.</h1><br />
+    <div align="center" id="login">
+
+        @using (Html.BeginForm("ForgetPass1", "Home", FormMethod.Post))
+        {
+            <p>
+                Username
+                <input style="width:250px" name="name" type="text">
+            </p>
+            <input style="text-align:center ; margin-left:100px; width:90px;" type="submit" name="submit" value="Send Verification"><br />
+        }
+        <br /><br />
+        @if (ViewBag.status != null)
+        {
+            if (ViewBag.status.Equals("Email Sent"))
+            {
+                <p>An email has been sent to your given email address.</p>
+            }
+            else if (ViewBag.status.Equals("Email Not Sent"))
+            {
+                <p>Error: Mail could not be sent.</p>
+            }
+        }
+        <p>
+            Don't have A Account yet?
+            <input style="text-align:center ; margin-left:100px ; width:90px;" type="submit" name="sign" value="Sign In">
+        </p>
+    </div>
+
+
+</body>
+
+
+</html>

@@ -1,0 +1,37 @@
+﻿
+<div id="sidebar">
+    <div class="inner">
+        <section id="search" class="alt">
+            <h2>Welcome</h2>
+            @if (ViewBag.AdminName != null)
+            {
+                <h2>@ViewBag.AdminName</h2>
+            }
+        </section>
+
+        <!-- Menu -->
+        <nav id="menu">
+            <header class="major">
+                <h2>Menu</h2>
+            </header>
+            <ul>
+                <li><a href="/Admin/Index">Homepage</a></li>
+                <li>
+                    <span class="opener">Manage Games</span>
+                    <ul>
+                        <li><a href="/Admin/AddG">Add Games</a></li>
+                        <li><a href="/Admin/ManageG">View / Edit Games</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <span class="opener">Manage Users</span>
+                    <ul>
+                        <li><a href="/Admin/AddU">Add Users</a></li>
+                        <li><a href="/Admin/ManageU">View / Edit Users</a></li>
+                    </ul>
+                </li>
+                <li><a href="/Admin/LogOut">Log Out</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>

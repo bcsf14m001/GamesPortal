@@ -1,0 +1,88 @@
+﻿@model  WebApplication3.Models.Game
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Header -->
+<div id="header-wrapper" class="wrapper">
+    <div id="header">
+
+        <!-- Logo -->
+        <div id="logo">
+            <h1><a href="index.html">Imag!ne</a></h1>
+            <p>Find the best games for your PC</p>
+        </div>
+
+        <!-- Nav -->
+        @Html.Partial("_HomeNavPartial")
+
+    </div>
+</div>
+
+<!-- Main -->
+<div class="wrapper style2">
+    <div class="title" style="margin-left: 1%;width:55%;padding:1%">
+        @using (Html.BeginForm("Search", "Home", FormMethod.Post))
+        {
+            <input type="text" placeholder="Title Name..." name="Search" style="width:75%;height:50px;float:left;padding: 5px;" />
+                    <input type="submit" value="Search" style="height:50px;padding-bottom: 5px;margin-left: 5px;" />
+        }
+    </div>
+    <div id="main" class="container">
+        <div id="content">
+            <article class="box post">
+                
+                <div class="wrapper">
+                <a href="#" class="image featured">
+                    <img src="@Url.Content("~/Content/Main/")images/pic01.jpg" alt="" />
+                </a>
+
+                <div class="sq" style="display: inline-block; float:left; width:240px;height:340px;">
+                    <img src="@Model.Path" style="width:100%; height:100%" />
+                </div>
+                <div class="sq" style="display: inline-block; float:none; width:70%; height:340px;">
+                    <h1 style="text-align:center"><b>Name :</b>         @Model.Name</h1>
+                    <br/>
+                    <h1 style="text-align:center"><b>Price :</b>         $@Model.Price</h1>
+                    <br/>
+                    <h1 style="text-align:center"><b>Genre :</b>         @Model.Genre</h1>
+                    <br />
+                    <h1 style="text-align:center"><b>Specs :</b>         @Model.CPU Ghz processor, @Model.RAM GB Ram, @Model.GPU GB GPU</h1>
+                    <br />
+                </div>
+
+                @if (ViewBag.Added == null)
+                {
+                    using (Html.BeginForm("AddToFavs1", "Home", FormMethod.Post))
+                    {
+                        <input type="hidden" value="@Model.Id" name="Gid">
+                        <div class="row">
+                            <div class="12u">
+                                <ul class="actions">
+                                    <li><input type="submit" class="style1" value="Add To Favourites" /></li>
+                                </ul>
+                            </div>
+                        </div>
+                     }
+                }
+                else
+                {
+                    using (Html.BeginForm("RemoveFav", "Home", FormMethod.Post))
+                    {
+                        <input type="hidden" value="@Model.Id" name="Gid2">
+                        <div class="row">
+                            <div class="12u">
+                                <ul class="actions">
+                                    <li><input type="submit" class="style1" value="Remove Favourite" /></li>
+                                </ul>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+            </article>
+
+        </div>
+
+    </div>
+</div>

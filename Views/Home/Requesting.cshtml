@@ -1,0 +1,65 @@
+﻿@model WebApplication3.Models.Request
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Contact";
+}
+<!-- Header -->
+<div id="header-wrapper" class="wrapper">
+    <div id="header">
+
+        <!-- Logo -->
+        <div id="logo">
+            <h1><a href="index.html">Imag!ne</a></h1>
+            <p>Find the best games for your PC</p>
+        </div>
+
+        <!-- Nav -->
+        @Html.Partial("_HomeNavPartial")
+
+    </div>
+</div>
+
+<div class="wrapper style2">
+    <div class="title" style="margin-left: 1%;width:55%;padding:1%">
+        <h2>Contact Us</h2>
+    </div>
+    <div id="main" class="container">
+        <div id="content">
+            <article class="box post">
+                <div class="row 150%">
+                    <div class="12u 12u(mobile)">
+
+                        <!-- Request Form -->
+                        <section>
+                            @using (Html.BeginForm("Requesting1", "Home", FormMethod.Post))
+                            {
+                                <div class="row 50%">
+                                    <div class="10u 12u(mobile)">
+                                        @Html.LabelFor(model => model.Name)
+                                        @Html.EditorFor(model => model.Name)
+                                        @Html.ValidationMessageFor(model => model.Name)
+                                    </div>
+                                    <div class="10u 12u(mobile)">
+                                        @Html.LabelFor(model => model.Description)
+                                        @Html.EditorFor(model => model.Description)
+                                        @Html.ValidationMessageFor(model => model.Description)
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="12u">
+                                        <ul class="actions">
+                                            <li><input type="submit" class="style1" value="Send Request" /></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            }
+                        </section>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+
+    </div>
+</div>
+
